@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block titulo_pagina %} Lista de Movimientos {% endblock %}
+
+{% block contenido_pagina %}
+        <h1>Lista de Movimientos</h1>
+        {% if items | length == 0 %}
+
+            <p>Introduce el primer movimiento</p>
+
+        {% else %}
+            <table class="paper">
+                <tr>
+                    <!--<th>Id</th>-->
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Divisa Origen</th>
+                    <th>Q_Origen</th>
+                    <th>Divisa Destino</th>
+                    <th>Q_Destino</th>
+                    <th>Precio Unitario</th>
+                </tr>
+                {% for item in items %}
+                <tr>
+                    <!--<td>{{ item.id }}</td>-->
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.time }}</td>
+                    <td>{{ item.desde }}</td>
+                    <td>{{ item.Q_desde }}</td>
+                    <td>{{ item.hasta }}</td>
+                    <td>{{ item.Q_hasta }}</td>
+                    <td>{{ item.PU }}€</td>
+
+                    <!--
+                    <td>{% if item.ingreso_gasto == 'I' %} Ingreso 
+                        {% else %} Gasto 
+                        {% endif %}</td>
+
+                    <td><a href="/borrar/{{ item.id }}" class="delete">Borrar</a></td>-->
+
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+{% endblock %}
+

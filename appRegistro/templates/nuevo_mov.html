@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo_pagina %} Nuevo movimiento {% endblock %}
+
+{% block contenido_pagina %}
+            <h1>Nueva transacción</h1>
+            <!--CLASE ERROR-->
+            {% for error in errores %}
+            <p class="error">{{ error}}</p>
+            {% endfor %}
+
+            <!--FORMULARIO-->
+            <form action="/nuevo" method="post">
+                {{ form.hidden_tag() }}
+
+                <div class="campo-formulario">
+                    {{ form.date.label() }}
+                    {{ form.date(type="date") }}
+                </div>
+                
+                <div class="campo-formulario">
+                    {{ form.time.label() }}
+                    {{ form.time(type="time") }}
+                </div>
+                
+                <div class="campo-formulario">
+                    {{ form.desde.label() }}
+                    {{ form.desde(type="text") }}
+                </div>
+
+                <div class="campo-formulario">
+                    {{ form.Q_desde.label() }}
+                    {{ form.Q_desde(type="number") }}
+                </div>
+
+                <div class="campo-formulario">
+                    {{ form.hasta.label() }}
+                    {{ form.hasta(type="text") }}
+                </div>
+
+                <div class="campo-formulario">
+                    {{ form.Q_hasta.label() }}
+                    {{ form.Q_hasta(type="number") }}
+                </div>
+                
+                <div class="campo-formulario">
+                    {{ form.PU.label() }}
+                    {{ form.PU(type="number") }}
+                </div>
+                
+                {{ form.submit() }}
+                
+            </form>
+
+{% endblock %}

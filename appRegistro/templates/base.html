@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--Aquí está el Lenguaje-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block titulo_pagina %} {% endblock %}</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <link rel="stylesheet" href="/static/css/flat_remix.css">
+    </head>
+    <body>
+        <header>
+            <h1>ATH - MyCrypto</h1>
+        </header>
+        <section class="container1">
+            <nav>
+                <p><a href="/">Inicio</a> | <a href="/nuevo">Nuevo</a></p>
+            </nav>
+            {% block contenido_pagina %} {% endblock %}
+        </section>
+        <br>
+        <footer>© 2021 - Todos los derechos reservados.</footer>
+    </body>
+</html> 

@@ -19,13 +19,13 @@ import requests
 # url = "https://rest.coinapi.io/v1/exchangerate/BTC/EUR"
 # ------------------------------------------------------------
 
-url = "https://rest.coinapi.io/v1/exchangerate/{}/{}"
-apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"
+# url = "https://rest.coinapi.io/v1/exchangerate/{}/{}"
+# apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"
 
 # ------------------------------------------------------------
 # PREPARACIÓN de los datos para hacer la petición:
 # ------------------------------------------------------------
-header = {"X-CoinAPI-Key": apikey}
+# header = {"X-CoinAPI-Key": apikey}
 
 # ------------------------------------------------------------
 # PETICIÓN Y RESPUESTA # requests.+verbo.
@@ -33,7 +33,7 @@ header = {"X-CoinAPI-Key": apikey}
 # La petición irá al servidor para ser ejecutada.
 # La respuesta será instrumentada a través del .GET
 # ------------------------------------------------------------
-answer = requests.get(url, headers = header)
+# answer = requests.get(url, headers = header)
 
 # ------------------------------------------------------------
 # Hay que atender a los códigos de respuesta
@@ -63,6 +63,10 @@ answer = requests.get(url, headers = header)
 # -------------------MONTAMOS EL BUCLE -----------------------
 # ************************************************************
 
+url = "https://rest.coinapi.io/v1/exchangerate/{}/{}"
+apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"
+header = {"X-CoinAPI-Key": apikey}
+
 askMore = 's'
 while askMore == 's':
     askCoin = input("Divisa de origen: ")
@@ -70,10 +74,16 @@ while askMore == 's':
     answer = requests.get(url.format(askCoin, answerCoin), headers = header)
 
     if answer.status_code == 200:
-        # Códigos de respuesta de HTTP, respuestas informativas, revisar
         print(answer.json()['rate'])
     else:
         print(answer.status_code)
-        print(answer.json())
+
 
     askMore = input("Desea seguir su consulta? (S/N)").lower()
+
+# PENDIENTE:
+# Tengo que validar errores en los status_code, para cuando 
+# consulte y haya un error de código, dependiendo del tipo 
+# de error, que me muestre un mensaje.
+# Hacer función Consulta que conectará con la transacción
+# Conectar el valor con el formulario, para referenciarlo y guardarlo

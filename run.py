@@ -1,0 +1,1 @@
+from appRegistro import app
