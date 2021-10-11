@@ -1,0 +1,45 @@
+/* Esto es para poner comments */
+
+* {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    background-color: whitesmoke;
+    font-family: 'Noto Sans JP', sans-serif;
+    /* Aquí usamos las variables establecidas 
+    corporativo (carácter) */
+    color: var(--dark-color);
+}
+
+h1 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    border: none;
+/*    display: inline-block; */
+}
+
+a {
+    color: var(--dark-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.logo, .logo span {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-style: normal;
+    text-transform: capitalize;
+    background-color: none;
+}
+
+.logo span {
+    color: goldenrod;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    padding: 0 1rem;
+}

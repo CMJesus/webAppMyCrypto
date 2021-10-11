@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--Aquí está el Lenguaje-->
 <html lang="en">
-    <head>
+    <head id="titulo_grande" class="titulo_grande">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block titulo_pagina %} {% endblock %}</title>
@@ -14,7 +14,7 @@
         </header>
         <section class="container1">
             <nav>
-                <p><a href="/">Inicio</a> | <a href="/nuevo">Nuevo</a></p>
+                <p><a href="/">Inicio</a> | <a href="/nuevo">Nuevo</a> | | <a href="/appRegistro/templates/status.html">Estado del Portfolio</a></p>
             </nav>
             {% block contenido_pagina %} {% endblock %}
         </section>

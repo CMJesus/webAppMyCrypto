@@ -3,9 +3,16 @@
 {% block titulo_pagina %} Lista de Movimientos {% endblock %}
 
 {% block contenido_pagina %}
+
+<style>
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+    
+
         <h1>Lista de Movimientos</h1>
         {% if items | length == 0 %}
-
             <p>Introduce el primer movimiento</p>
 
         {% else %}
@@ -20,6 +27,7 @@
                     <th>Q_Destino</th>
                     <th>Precio Unitario</th>
                 </tr>
+
                 {% for item in items %}
                 <tr>
                     <!--<td>{{ item.id }}</td>-->
@@ -41,6 +49,7 @@
                 </tr>
                 {% endfor %}
             </table>
+
         {% endif %}
 {% endblock %}
 

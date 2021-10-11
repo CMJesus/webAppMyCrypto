@@ -1,9 +1,10 @@
 
 :root {
-    --color-primario: #8377d1;
-    --color-secundario: #f7dba7;
+    --color-primario: #006E90;
+    --color-secundario: #A18276;
+    --color-terciario: #F5CB5C;
     --negro: #2c363f;
-    --blanco: #fafafa;
+    --blanco: #FFFAFF;
     --separacion-defecto: 8px;
 }
 
@@ -14,6 +15,22 @@
     padding: 0;
 }
 
+body {
+    background-color: whitesmoke;
+    font-family: 'Noto Sans JP', sans-serif;
+    /* Aquí usamos las variables establecidas 
+    corporativo (carácter) */
+    color: var(--dark-color);
+}
+
+
+h1 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    border: none;
+/*    display: inline-block; */
+}
+
 footer {
     margin-top: var(--separacion-defecto);
 }
@@ -21,14 +38,16 @@ footer {
 header *, footer {
     border-radius: var(--separacion-defecto);
     background-color: var(--color-primario);
-    color: var(--blanco);
-    font-size: 0.5rem;
-    padding: 2rem;
+    color: var(--color-terciario);
+    font-size: 1rem;
+    padding: 1.5rem;
 }
 
 .container1 {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
+
+
 }
 
 table.paper {

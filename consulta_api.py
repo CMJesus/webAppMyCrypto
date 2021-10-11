@@ -67,19 +67,33 @@ url = "https://rest.coinapi.io/v1/exchangerate/{}/{}"
 apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"
 header = {"X-CoinAPI-Key": apikey}
 
-askMore = 's'
-while askMore == 's':
-    askCoin = input("Divisa de origen: ")
-    answerCoin = input("Divisa de destino: ")
-    answer = requests.get(url.format(askCoin, answerCoin), headers = header)
+# Esta función parte de dos monedas y devuelve el codigo de la respuesta y el valor del rate en caso de que la respuesta haya sido success = 200, si no, devuelve 0 como segundo valor
+def getPU(desde, hasta):
+    answer = requests.get(url.format(desde, hasta), headers = header)
+    
+    #print(answer.json())
 
     if answer.status_code == 200:
-        print(answer.json()['rate'])
+        return answer.status_code, answer.json()['rate']
     else:
-        print(answer.status_code)
+        return  answer.status_code, 0
+  
 
 
-    askMore = input("Desea seguir su consulta? (S/N)").lower()
+def consultaAPI():
+    askMore = 's'
+    while askMore == 's':
+        askCoin = input("Divisa de origen: ")
+        answerCoin = input("Divisa de destino: ")
+        answer = requests.get(url.format(askCoin, answerCoin), headers = header)
+
+        if answer.status_code == 200:
+            print(answer.json()['rate'])
+        else:
+            print(answer.status_code)
+
+
+        askMore = input("Desea seguir su consulta? (S/N)").lower()
 
 # PENDIENTE:
 # Tengo que validar errores en los status_code, para cuando 

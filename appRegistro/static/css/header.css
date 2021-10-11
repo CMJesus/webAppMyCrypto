@@ -1,0 +1,50 @@
+header {
+    background-color: none;
+    height: 100vh;
+    padding: 100px;
+    background: url('../img/Boda_entrada.jpg') center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.header-content {
+    background-color: rgba(255, 255, 255, .60);
+    position: absolute;
+    margin-top: 2cm;
+    margin-right: 3cm; /* le he tenido que meter margen para centrar */
+    border: solid 1.5px white;
+    padding: 1rem;
+    text-shadow: whitesmoke 1px 1px; /* los pixeles refieren; 
+    primero es sombra por la derecha, y; el segundo, sombra 
+    por debajo */
+}
+
+.header-content > h1 {
+    text-align: center;
+}
+
+.header-content > .tagline {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.header-content > .promo-text {
+    margin: 2% 2rem 0 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    /* background-color: rgba(255, 255, 255, .25) */;
+    /* Color de fondo en formato rgb, siendo el último
+    valor el de opacidad */
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: wheat;
+    opacity: .100;
+    /* También se pueden superponer imágenes, plantillas, etc.
+    Así se pueden comprimir resoluciones */
+}

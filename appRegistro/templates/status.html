@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo_pagina %} Lista de Movimientos {% endblock %}
+
+{% block contenido_pagina %}
+            <h1>Nueva transacción</h1>
+            <!--CLASE ERROR-->
+                {% for error in errores %}
+                    <p class="error">{{ error}}</p>
+                {% endfor %}
+
+            <form action="/status" method="post">
+                {{ form.hidden_tag() }}
+
+                <div class="campo-formulario">
+                    {{ form.portfolio.label() }}
+                    {{ form.portfolio(type="number") }}
+                </div>
+
+                <div class="campo-formulario">
+                    {{ form.valor_actual.label() }}
+                    {{ form.valor_actual(type="number") }}
+                </div>
+                
+
+{% endblock %}

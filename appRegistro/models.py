@@ -26,12 +26,12 @@ class DBManager():
         conex.close()
         return registros
 
-    # def insertaSQL(self, consulta, params):
-    #     conex = sqlite3.connect(self.ruta_basedatos)
+    def ejecutarSQL(self, consulta, params):
+        conex = sqlite3.connect(self.ruta_basedatos)
 
-    #     cur = conex.cursor()
-    #     claves = params.keys()
+        cur = conex.cursor()
+        claves = params.keys()
 
-    #     cur.execute(consulta, params)
-    #     conex.commit()
-    #     conex.close()
+        cur.execute(consulta, params)
+        conex.commit()
+        conex.close()
