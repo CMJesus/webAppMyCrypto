@@ -1,2 +1,2 @@
-RUTA_BASE_DE_DATOS="data/movimientos.db"
+RUTA_BASE_DE_DATOS="data/mycrypto.db"
 SECRET_KEY="<CLAVE SECRETA PARA CSRF WTF>"

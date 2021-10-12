@@ -7,7 +7,6 @@ class DBManager():
 
     def consultaSQL(self, consulta, params = []):
         conex = sqlite3.connect(self.ruta_basedatos)
-
         cur = conex.cursor()
         cur.execute(consulta, params)
         
@@ -35,3 +34,5 @@ class DBManager():
         cur.execute(consulta, params)
         conex.commit()
         conex.close()
+
+# Aquí hay que crear las funciones para la tercera plantilla

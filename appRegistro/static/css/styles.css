@@ -5,7 +5,7 @@
     --color-terciario: #F5CB5C;
     --negro: #2c363f;
     --blanco: #FFFAFF;
-    --separacion-defecto: 8px;
+    --separacion-defecto: 10px;
 }
 
 * {
@@ -14,15 +14,6 @@
     margin: 0;
     padding: 0;
 }
-
-body {
-    background-color: whitesmoke;
-    font-family: 'Noto Sans JP', sans-serif;
-    /* Aquí usamos las variables establecidas 
-    corporativo (carácter) */
-    color: var(--dark-color);
-}
-
 
 h1 {
     font-family: 'Noto Sans JP', sans-serif;
@@ -46,8 +37,6 @@ header *, footer {
 .container1 {
     max-width: 1000px;
     margin: 0 auto;
-
-
 }
 
 table.paper {
@@ -76,7 +65,7 @@ td {
 }
 
 .campo-formulario input:not([type="radio"]) {
-    width: 100%;
+    width: 50%;
 }
 
 .error {

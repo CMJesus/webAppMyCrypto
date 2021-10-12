@@ -77,7 +77,6 @@ def getPU(desde, hasta):
         return answer.status_code, answer.json()['rate']
     else:
         return  answer.status_code, 0
-  
 
 
 def consultaAPI():
