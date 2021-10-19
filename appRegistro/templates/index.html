@@ -28,10 +28,10 @@
                     <td>{{ item.date }}</td>
                     <td>{{ item.time }}</td>
                     <td>{{ item.desde }}</td>
-                    <td>{{ item.Q_desde }}</td>
+                    <td>{{ "%.2f" | format(item.Q_desde) }}</td>
                     <td>{{ item.hasta }}</td>
-                    <td>{{ item.Q_hasta }}</td>
-                    <td>{{ item.PU }}€</td>
+                    <td>{{ "%.2f"|format(item.Q_hasta) }}</td>
+                    <td>{{ "%.2f"|format(item.PU) }}€</td>
                 </tr>
                 {% endfor %}
             </table>

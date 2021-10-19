@@ -13,30 +13,26 @@
                         <th>Valor actual de euros (total portfolio)</th>
                     </tr>
     
-                    {% for item in items %}
                     <tr>
-                        <!--<td>{{ item.id }}</td>-->
-                        <td>{{ item.date }}</td>
-                        <td>{{ item.time }}</td>
-                        <td>{{ item.desde }}</td>
+                        
+                        <td>{{ "%.2f"|format(saldo) }}</td>
+                        <td>{{ "%.2f"|format(invertido) }}</td>
+                        <td>{{ "%.2f"|format(valor) }}</td>
                     </tr>
-                    {% endfor %}
+                    
                 </table>
 
+                
+                
+                <!-- <h2>Saldo de Euros invertidos: suma de cantidad to donde los movimientos tengan moneda to EUR</h2>
+                <h2>Total de Euros Invertidos: suma de cantidad from cuando la moneda from es EUR</h2>
+                <h2>Valor actual en euros de nuestras criptos</h2>
+                <p>Suma de cantidad to de todos los movimientos cuya moneda from es dicha crypto.
+                    Con esta cantidad consumimos api para obtener el valor actual de la crypto. Finalmente, sumar euros</p>
+                
+                <h2>Finalmente mostrar EUROS INVERTIDOS</h2>
+                <h2>VALOR ACTUAL (total euros invertidos + saldo de euros invertidos(ganancia/perdida) + valor de cryptos)</h2>-->
 
 
-            </table>
 {% endblock %}
-            <!--
-            <p>El sistema deberá de ofrecer los euros invertidos en compra de cryptos, 
-                así como el valor actual en euros de todas las crypto que tengamos.</p>
             
-            <h2>Saldo de Euros invertidos: suma de cantidad to donde los movimientos tengan moneda to EUR</h2>
-            <h2>Total de Euros Invertidos: suma de cantidad from cuando la moneda from es EUR</h2>
-            <h2>Valor actual en euros de nuestras criptos</h2>
-            <p>Suma de cantidad to de todos los movimientos cuya moneda from es dicha crypto.
-                Con esta cantidad consumimos api para obtener el valor actual de la crypto. Finalmente, sumar euros</p>
-            
-            <h2>Finalmente mostrar EUROS INVERTIDOS</h2>
-            <h2>VALOR ACTUAL (total euros invertidos + saldo de euros invertidos(ganancia/perdida) + valor de cryptos)</h2>
--->

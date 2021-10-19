@@ -22,23 +22,22 @@
                     {{ form.time.label() }}
                     {{ form.time(type="time") }}
                 </div>
-                
+
                 <div class="campo-formulario">
                     {{ form.desde.label() }}
                     {{ form.desde(type="text") }}
-                </div>
-
-                <div class="campo-formulario">
+                
                     {{ form.Q_desde.label() }}
                     {{ form.Q_desde(type="number") }}
                 </div>
 
                 <div class="campo-formulario">
                     {{ form.hasta.label() }}
-                    {{ form.hasta(type="text") }}
+                    {{ form.hasta(type="text") }}                   
                 </div>
 
                 <input name="Calcular" class="blue-button" type="submit" value="Calcular">
+                
 
                 <div class="campo-formulario">
                     {{ form.Q_hasta.label() }}
@@ -46,7 +45,7 @@
                     {% if value_PU == Null %}
                         {{ form.Q_hasta(type="number") }}
                     {% else %}
-                        {{ form.Q_hasta(type="number", value=form.Q_desde.data * value_PU) }}
+                        {{ form.Q_hasta(type="number", value=form.Q_desde.data * value_PU, readonly=True) }}   
                     {% endif %}                                                
                 </div>
 
@@ -56,8 +55,9 @@
                     {% if value_PU == Null %}
                         {{ form.PU(type="number") }}
                     {% else %}
-                        {{ form.PU(type="number", value=value_PU) }}
+                        {{ form.PU(type="number", value=value_PU, readonly=True) }}
                     {% endif %}
+                    
                 </div>
                 
                 <input name="Enviar" class="blue-button" type="submit" value="Enviar">

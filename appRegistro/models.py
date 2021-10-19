@@ -23,7 +23,9 @@ class DBManager():
                 ix_clave += 1
             registros.append(d)
         conex.close()
+        
         return registros
+
 
     def ejecutarSQL(self, consulta, params):
         conex = sqlite3.connect(self.ruta_basedatos)
@@ -34,5 +36,3 @@ class DBManager():
         cur.execute(consulta, params)
         conex.commit()
         conex.close()
-
-# Aquí hay que crear las funciones para la tercera plantilla

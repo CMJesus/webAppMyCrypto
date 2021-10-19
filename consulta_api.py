@@ -64,6 +64,7 @@ import requests
 # ************************************************************
 
 url = "https://rest.coinapi.io/v1/exchangerate/{}/{}"
+#apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"#
 apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"
 header = {"X-CoinAPI-Key": apikey}
 
@@ -71,10 +72,10 @@ header = {"X-CoinAPI-Key": apikey}
 def getPU(desde, hasta):
     answer = requests.get(url.format(desde, hasta), headers = header)
     
-    #print(answer.json())
+    print(answer.json())
 
     if answer.status_code == 200:
-        return answer.status_code, answer.json()['rate']
+        return answer.status_code, float(answer.json()['rate'])
     else:
         return  answer.status_code, 0
 
@@ -90,6 +91,8 @@ def consultaAPI():
             print(answer.json()['rate'])
         else:
             print(answer.status_code)
+
+            #Aquí añadir validador
 
 
         askMore = input("Desea seguir su consulta? (S/N)").lower()
