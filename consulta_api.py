@@ -7,7 +7,7 @@
 # ------------------- pip install requests ------------------
 # ------------------------------------------------------------
 import requests
-
+import decimal
 # ------------------------------------------------------------
 # DIRECCIÓN: a donde dirigiremos nuestro request.
 # ------------------------------------------------------------
@@ -75,10 +75,11 @@ def getPU(desde, hasta):
     print(answer.json())
 
     if answer.status_code == 200:
-        return answer.status_code, float(answer.json()['rate'])
+        rate = answer.json()['rate']
     else:
-        return  answer.status_code, 0
+        rate = 0
 
+    return answer.status_code, rate
 
 def consultaAPI():
     askMore = 's'
@@ -101,5 +102,3 @@ def consultaAPI():
 # Tengo que validar errores en los status_code, para cuando 
 # consulte y haya un error de código, dependiendo del tipo 
 # de error, que me muestre un mensaje.
-# Hacer función Consulta que conectará con la transacción
-# Conectar el valor con el formulario, para referenciarlo y guardarlo

@@ -14,7 +14,12 @@
         </header>
         <section class="container1">
             <nav>
-                <p><a href="/">Inicio</a> | <a href="/nuevo">Nuevo</a> | | <a href="/status">Portfolio</a></p>
+                {% if disableInicio == Null %}
+                    <p><a href="/">Inicio</a> | <a href="/nuevo">Nuevo</a> | <a href="/status">Portfolio</a></p>
+                {% else %}
+                    <p><a href="/nuevo">Nuevo</a> | <a href="/status">Portfolio</a></p>
+                {% endif %} 
+                
             </nav>
             {% with messages = get_flashed_messages() %}
                 {% for message in messages %}

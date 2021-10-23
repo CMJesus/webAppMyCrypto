@@ -30,8 +30,8 @@
                     <td>{{ item.desde }}</td>
                     <td>{{ "%.2f" | format(item.Q_desde) }}</td>
                     <td>{{ item.hasta }}</td>
-                    <td>{{ "%.2f"|format(item.Q_hasta) }}</td>
-                    <td>{{ "%.2f"|format(item.PU) }}€</td>
+                    <td>{{ "%.6f"|format(item.Q_hasta) }}</td>
+                    <td>{{ "%.6f"|format(item.PU) }}€</td>
                 </tr>
                 {% endfor %}
             </table>

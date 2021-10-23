@@ -48,38 +48,3 @@ def getSumaTo(dbManager, cryptoCode):
         return 0
     else: 
         return queryDataResult[0]['SUMA']
-
-
-
-
-
-# def getSaldo(dbManager):
-#     return getSumaTo(dbManager)-getSumaFrom(dbManager)
-
-# def getSumaTo(dbManager):
-#     consulta = """SELECT SUM(Q_hasta) as SUMA FROM myCrypto WHERE hasta='EUR';"""
-#     queryDataResult = dbManager.consultaSQL(consulta)
-#     return queryDataResult[0]['SUMA']
-
-# def getSumaFrom(dbManager):
-#     consulta = """SELECT SUM(Q_desde) as SUMA FROM myCrypto WHERE desde='EUR';"""
-#     queryDataResult = dbManager.consultaSQL(consulta)
-#     return queryDataResult[0]['SUMA']
-
-
-###############
-
-# def getSaldo(dbManager):
-#     consulta = """SELECT SUM(Q_hasta) as SUMA FROM myCrypto WHERE hasta='EUR';"""
-#     queryDataResult = dbManager.consultaSQL(consulta)
-
-#     return queryDataResult[0]['SUMA']
-
-#complementar con los euros from
-
-# def getInvertido(dbManager):
-#     consulta = """SELECT SUM(Q_hasta) as SUMA FROM myCrypto WHERE hasta='EUR';"""
-#     queryDataResult = dbManager.consultaSQL(consulta)
-
-#     return queryDataResult[0]['SUMA']
-

@@ -15,7 +15,7 @@ def start():
             FROM myCrypto ORDER BY date;
     """
     movimientos = dbManager.consultaSQL(consulta)
-    return render_template("index.html", items=movimientos)
+    return render_template("index.html", items=movimientos, disableInicio=True, disableNuevo=True, disablePortfolio=True)
 
 
 @app.route("/nuevo", methods=["GET", "POST"])
@@ -47,25 +47,29 @@ def nuevo():
 
         elif request.form.get("Calcular"):
             value_desde = formulario.desde.data 
-            value_hasta = formulario.hasta.data 
+            value_hasta = formulario.hasta.data
+            value_Q_desde = formulario.Q_desde.data
+            saldo = getSaldo(dbManager, value_desde)
+
+            if saldo > value_Q_desde:
             
-            print(value_desde, value_hasta)
+                print(value_desde, value_hasta)
+                
+                if value_desde == value_hasta:
+                    flash("Debe de indicar una moneda distinta")
+                    return render_template("nuevo_mov.html", form=formulario)
+                else:
+                    status_code, rate = getPU(value_desde, value_hasta)
+                    
+                    print(status_code, rate)
+                    
+                    formulario.PU.data = rate
+                    value_PU = rate
+                    return render_template("nuevo_mov.html", form=formulario, value_PU=rate)
             
-            if value_desde == value_hasta:
-                flash("Debe de indicar una moneda distinta")
-                return render_template("nuevo_mov.html", form=formulario)
             else:
-                status_code, rate = getPU(value_desde, value_hasta)
-                
-                print(status_code, rate)
-                
-                formulario.PU.data = rate
-                value_PU = rate
-                return render_template("nuevo_mov.html", form=formulario, value_PU=rate)
-                
-
-# Habilitar botón enviar una vez que se haya hecho el cálculo
-
+                flash("No hay saldo disponible para realizar la transacción. Su saldo disponible es: " + str(saldo))
+                return render_template("nuevo_mov.html", form=formulario)
 
     elif request.method == "GET":
         return render_template("nuevo_mov.html", form=formulario)
@@ -80,7 +84,3 @@ def status():
     return render_template("status.html", saldo=saldo, invertido=invertido, valor=valor)
 
 
-
-
-
-#   """INSERT INTO myCrypto (date, time, desde, Q_desde, hasta, Q_hasta, PU) VALUES (:date, :time, :desde, :Q_desde, :hasta, :Q_hasta, :PU)"""

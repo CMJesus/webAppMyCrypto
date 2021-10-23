@@ -50,10 +50,7 @@ class MovimientoFormulario(FlaskForm):
     PU = FloatField("PU")
 
 
-#DECIMAL FIELD WTF FORM
 
-
-# Desactivar Enviar hasta que se calcula
 # Gestión de errores con el cálculo, para la consulta, y del envío, para que haga 
 # el reenvío en condiciones
 

@@ -12,27 +12,12 @@
                         <th>Total de € invertidos</th>
                         <th>Valor actual de euros (total portfolio)</th>
                     </tr>
-    
                     <tr>
                         
                         <td>{{ "%.2f"|format(saldo) }}</td>
                         <td>{{ "%.2f"|format(invertido) }}</td>
-                        <td>{{ "%.2f"|format(valor) }}</td>
+                        <td>{{ "%.6f"|format(valor) }}</td>
                     </tr>
-                    
                 </table>
-
-                
-                
-                <!-- <h2>Saldo de Euros invertidos: suma de cantidad to donde los movimientos tengan moneda to EUR</h2>
-                <h2>Total de Euros Invertidos: suma de cantidad from cuando la moneda from es EUR</h2>
-                <h2>Valor actual en euros de nuestras criptos</h2>
-                <p>Suma de cantidad to de todos los movimientos cuya moneda from es dicha crypto.
-                    Con esta cantidad consumimos api para obtener el valor actual de la crypto. Finalmente, sumar euros</p>
-                
-                <h2>Finalmente mostrar EUROS INVERTIDOS</h2>
-                <h2>VALOR ACTUAL (total euros invertidos + saldo de euros invertidos(ganancia/perdida) + valor de cryptos)</h2>-->
-
-
 {% endblock %}
             
