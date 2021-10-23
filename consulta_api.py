@@ -56,8 +56,8 @@ import decimal
 # ************************************************************
 
 url = "https://rest.coinapi.io/v1/exchangerate/{}/{}"
-#apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"#
-apikey = "132342DF-03FF-4FE2-A319-ACACF95AE59F"
+apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"
+# apikey = "132342DF-03FF-4FE2-A319-ACACF95AE59F"
 header = {"X-CoinAPI-Key": apikey}
 
 # Función "getPu", con argumentos de entrada "desde" y "hasta".

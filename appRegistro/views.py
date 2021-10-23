@@ -9,10 +9,10 @@ ruta_basedatos = app.config.get("RUTA_BASE_DATOS")
 dbManager = DBManager(ruta_basedatos)
 
 # ************************************************************
-# -------------------------VISTAS  (entrada de appRegistro)---
+# -----------VISTAS  (entrada de appRegistro)-----------------
 # ************************************************************
 
-# 1) INICIO.--------------------------------------------------
+# 1) FUNCIÓN INICIO:
 @app.route("/")
 def start():
     consulta = """
@@ -22,31 +22,33 @@ def start():
     movimientos = dbManager.consultaSQL(consulta)
     return render_template("index.html", items=movimientos, disableInicio=True)
 
-# 2) NUEVA TRANSACCIÓN.---------------------------------------
+# 2) FUNCIÓN NUEVA TRANSACCIÓN:
 @app.route("/nuevo", methods=["GET", "POST"])
 def nuevo():
     formulario = MovimientoFormulario()
     if request.method == "POST":
-        
-        # Enviar:---------------------------------------------
+        # FUNCIÓN ENVIAR:
         if request.form.get("Enviar"):
             if formulario.validate():
-                consulta = """INSERT INTO myCrypto (date, time, desde, Q_desde, hasta, Q_hasta, PU)
-                                VALUES (:date, :time, :desde, :Q_desde, :hasta, :Q_hasta, :PU)"""
-                
+                flash("FORMULARIO VALIDADO")
+                consulta = """INSERT 
+                INTO myCrypto (date, time, desde, Q_desde, hasta, Q_hasta, PU)
+                VALUES (:date, :time, :desde, :Q_desde, :hasta, :Q_hasta, :PU)
+                """
                 try:
                     dbManager.ejecutarSQL(consulta, formulario.data)
                 except Exception as ex:
-                    print("Se ha producido un error de acceso a base de datos.", ex)
-                    flash("Se ha producido un error en la base de datos. Consulte con su administrador")
+                    print("Error de acceso a base de datos.", ex)
+                    flash("Consulte con su administrador, error en la base de datos. ")
                     print(consulta)
                     return render_template("nuevo_mov.html", form = formulario, disableNuevo=True)
                 return redirect(url_for("start"))
             else:
                 return render_template("nuevo_mov.html", form = formulario, disableNuevo=True)
         
-        # Calcular:------------------------------------------- 
-        # Función que calcula qué rate hay entre las distintas monedas "desde" y "hasta" (formulario).
+        # FUNCIÓN CALCULAR:
+        # Proceso: calcula el "rate" existente entre las monedas "desde" y "hasta" (formulario).
+        # Resultado: valor a través de "rate".
         elif request.form.get("Calcular"):
             value_desde = formulario.desde.data 
             value_hasta = formulario.hasta.data
@@ -77,7 +79,9 @@ def nuevo():
     elif request.method == "GET":
         return render_template("nuevo_mov.html", form=formulario, disableNuevo=True)
 
-# 3) STATUS PORTFOLIO.--------------------------------------
+# 3) FUNCIÓN STATUS PORTFOLIO:
+# Proceso: procesar las cantidades recibidas por las funciones llamadas.
+# Resultado: cantidades.
 @app.route("/status", methods=["GET"])
 def status():
     saldo = getSaldo(dbManager, "EUR")

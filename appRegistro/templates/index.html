@@ -3,12 +3,9 @@
 {% block titulo_pagina %} Lista de Movimientos {% endblock %}
 
 {% block contenido_pagina %}
-
         <h1>Lista de Movimientos</h1>
-        
         {% if items | length == 0 %}
             <p>Introduce el primer movimiento</p>
-
         {% else %}
             <table class="paper">
                 <tr>
@@ -21,10 +18,8 @@
                     <th>Q_Destino</th>
                     <th>Precio Unitario</th>
                 </tr>
-
                 {% for item in items %}
                 <tr>
-                    <!--<td>{{ item.id }}</td>-->
                     <td>{{ item.date }}</td>
                     <td>{{ item.time }}</td>
                     <td>{{ item.desde }}</td>
@@ -35,7 +30,6 @@
                 </tr>
                 {% endfor %}
             </table>
-
         {% endif %}
 {% endblock %}
 

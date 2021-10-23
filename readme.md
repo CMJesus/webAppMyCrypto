@@ -1,6 +1,6 @@
 # myCrypto
 
-Registro de transacciones de compra y venta entre dinero fiduciario y cryptomonedas.
+<Registro de transacciones de compra y venta entre dinero fiduciario y cryptomonedas.
 
 # Instalación
 

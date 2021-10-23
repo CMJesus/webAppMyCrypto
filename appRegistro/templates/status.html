@@ -4,7 +4,6 @@
 
 {% block contenido_pagina %}
             <h1>Estado del portfolio de inversión</h1>
-
                 <table class="paper">
                     <tr>
                         <!--<th>Id</th>-->
@@ -18,7 +17,6 @@
                         <td> {{ "%.2f"|format(invertido) }} </td>
                         <td> {{ "%.6f"|format(valor) }} </td>
                         <td> {{ "%.2f"|format(saldo + invertido + valor) }} </td>
-
                     </tr>
                 </table>
 {% endblock %}
