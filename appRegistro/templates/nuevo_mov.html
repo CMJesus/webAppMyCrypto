@@ -38,10 +38,8 @@
 
                 <input name="Calcular" class="blue-button" type="submit" value="Calcular">
                 
-
                 <div class="campo-formulario">
                     {{ form.Q_hasta.label() }}
-
                     {% if value_PU == Null %}
                         {{ form.Q_hasta(type="number") }}
                     {% else %}

@@ -51,54 +51,43 @@ import decimal
 # La respuesta aquí será tipo diccionario por virtud del .json
 # Del .json podemos coger el campo deseado, "rate".
 
-# ------------------------------------------------------------
-
-# PENDIENTE:
-# Tengo que validar errores en los status_code, para cuando 
-# consulte y haya un error de código, dependiendo del tipo 
-# de error, que me muestre un mensaje.
-
-
 # ************************************************************
 # -------------------MONTAMOS EL BUCLE -----------------------
 # ************************************************************
 
 url = "https://rest.coinapi.io/v1/exchangerate/{}/{}"
 #apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"#
-apikey = "FB9EC041-B572-48B2-B6C1-DCBB24B102C2"
+apikey = "132342DF-03FF-4FE2-A319-ACACF95AE59F"
 header = {"X-CoinAPI-Key": apikey}
 
-# Esta función parte de dos monedas y devuelve el codigo de la respuesta y el valor del rate en caso de que la respuesta haya sido success = 200, si no, devuelve 0 como segundo valor
+# Función "getPu", con argumentos de entrada "desde" y "hasta".
+# Para el caso en que el GET haya sido bien ejecutado = 200 (success).  
+# Devuelve como respuesta el valor "rate" resultante de entre las cryptoCode insertadas como parámetros/argumentos. 
 def getPU(desde, hasta):
     answer = requests.get(url.format(desde, hasta), headers = header)
-    
     print(answer.json())
 
     if answer.status_code == 200:
         rate = answer.json()['rate']
+    # elif answer.status_code != 200:
+    #     print("ERROR DE STATUS CODE: " + status_code)
+    # Me da un status code 500 (aunque no me sale siempre): pero la respuesta es: 
+    # {'error': "You requested specific single item that we don't have at this moment."}    
     else:
         rate = 0
-
     return answer.status_code, rate
 
-def consultaAPI():
-    askMore = 's'
-    while askMore == 's':
-        askCoin = input("Divisa de origen: ")
-        answerCoin = input("Divisa de destino: ")
-        answer = requests.get(url.format(askCoin, answerCoin), headers = header)
+# def consultaAPI():
+#     askMore = 's'
+#     while askMore == 's':
+#         askCoin = input("Divisa de origen: ")
+#         answerCoin = input("Divisa de destino: ")
+#         answer = requests.get(url.format(askCoin, answerCoin), headers = header)
 
-        if answer.status_code == 200:
-            print(answer.json()['rate'])
-        else:
-            print(answer.status_code)
+#         if answer.status_code == 200:
+#             print(answer.json()['rate'])
+#         else:
+#             print(answer.status_code)
+#         askMore = input("Desea seguir su consulta? (S/N)").lower()
 
-            #Aquí añadir validador
 
-
-        askMore = input("Desea seguir su consulta? (S/N)").lower()
-
-# PENDIENTE:
-# Tengo que validar errores en los status_code, para cuando 
-# consulte y haya un error de código, dependiendo del tipo 
-# de error, que me muestre un mensaje.
