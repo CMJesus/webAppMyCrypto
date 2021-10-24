@@ -8,26 +8,30 @@
             <p>Introduce el primer movimiento</p>
         {% else %}
             <table class="paper">
-                <tr>
-                    <!--<th>Id</th>-->
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Divisa Origen</th>
-                    <th>Q_Origen</th>
-                    <th>Divisa Destino</th>
-                    <th>Q_Destino</th>
-                    <th>Precio Unitario</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <!--<th>Id</th>-->
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Moneda origen</th>
+                        <th>Cantidad invertida</th>
+                        <th>Moneda destino</th>
+                        <th>Cantidad adquirida</th>
+                        <th>Precio Unitario</th>
+                    </tr>
+                </thead>
                 {% for item in items %}
-                <tr>
-                    <td>{{ item.date }}</td>
-                    <td>{{ item.time }}</td>
-                    <td>{{ item.desde }}</td>
-                    <td>{{ "%.2f" | format(item.Q_desde) }}</td>
-                    <td>{{ item.hasta }}</td>
-                    <td>{{ "%.6f"|format(item.Q_hasta) }}</td>
-                    <td>{{ "%.6f"|format(item.PU) }}€</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>{{ item.date }}</td>
+                        <td>{{ item.time }}</td>
+                        <td>{{ item.desde }}</td>
+                        <td>{{ "%.2f" | format(item.Q_desde) }}</td>
+                        <td>{{ item.hasta }}</td>
+                        <td>{{ "%.6f"|format(item.Q_hasta) }}</td>
+                        <td>{{ "%.6f"|format(item.PU) }}€</td>
+                    </tr>
+                </tbody>
                 {% endfor %}
             </table>
         {% endif %}

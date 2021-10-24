@@ -1,6 +1,6 @@
 from flask import flash
 from flask_wtf import FlaskForm
-from wtforms import HiddenField, DateField, StringField, RadioField, SubmitField, SelectField, FloatField, DecimalField
+from wtforms import HiddenField, DateField, StringField, SubmitField, SelectField, FloatField, DecimalField
 from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
 from appRegistro.models import DBManager
 import datetime
@@ -15,26 +15,12 @@ choices=[
     'StDolar'), ('BSV', 'Bsv'), ('ADA', 'Cardano')
         ]
 
-# FUNCIÓN: getChoicesDesde.
-# Proceso: selecciona las monedas que disponen de crédito:
-def getChoicesDesde(dbManager):
-    # Euro constante.
-    stockChoices=[('EUR', 'Euro')]
-    # Este bucle iterará en la lista de tuplas "choices".
-    for choice in choices:
-        if choice[0] != "EUR":
-            # Llamamos a la función getSaldo:
-            saldoCrypto = getSaldo(dbManager, choice[0])
-            if saldoCrypto > 0:
-                stockChoices.append(choice)        
-    return stockChoices
-
-# CLASE [*] MovimientoFormulario: 
-# Objeto que contiene distintos campos del formulario:
+# CLASE MOVIMIENTO_FORMULARIO: 
 class MovimientoFormulario(FlaskForm):
     ruta_basedatos = app.config.get("RUTA_BASE_DATOS")
     dbManager = DBManager(ruta_basedatos)
     id = HiddenField()
+    
     # FUNCIÓN VALIDAR FECHA:
     # Proceso: validar la fecha, comparándola a fecha de hoy; no puede ser mayor.
     def date_validate(formulario, campo):
@@ -43,20 +29,37 @@ class MovimientoFormulario(FlaskForm):
             flash("La fecha no puede ser posterior a hoy")
             raise ValidationError("La fecha no puede ser posterior a hoy")
     
-    # FORMULARIO:
+    # FUNCIÓN GET_CHOICES_DESDE.
+    # Proceso: selecciona las monedas que disponen de crédito:
+    def getChoicesDesde(dbManager):
+        # Euro constante.
+        stockChoices=[('EUR', 'Euro')]
+        # Este bucle iterará en la lista de tuplas "choices".
+        for choice in choices:
+            if choice[0] != "EUR":
+                # Llamamos a la función getSaldo:
+                saldoCrypto = getSaldo(dbManager, choice[0])
+                if saldoCrypto > 0:
+                    stockChoices.append(choice)
+        #print(stockChoices)        
+        return stockChoices
+
+# ************************************************************
+# ----------------------Formulario----------------------------
+# ************************************************************
     # Campo FECHA:
-    date = DateField("date", validators=[DataRequired(message="Debe de introducir una fecha"), date_validate])
+    date = DateField("Fecha:", validators=[DataRequired(message="Debe de introducir una fecha"), date_validate])
     # Campo TIEMPO:
-    time = StringField("time", validators=[DataRequired(message="Debe de informar sobre la hora")])
-    # Campo MONEDA_DESDE:
-    desde = SelectField("desde", choices=getChoicesDesde(dbManager))
+    time = StringField("Hora:", validators=[DataRequired(message="Debe de informar sobre la hora")])
+    # Campo MONEDA_DESDE: no me acepta float.
+    desde = SelectField("Moneda desde la que desea hacer su inversión:", choices=getChoicesDesde(dbManager))
     # Campo Q_MONEDA_DESDE:
-    Q_desde = FloatField("Q_desde")
+    Q_desde = FloatField("Importe a invertir:")
     # Campo MONEDA_HASTA:
-    hasta = SelectField("hasta",  choices=choices, validators=[DataRequired(message="Debe de informar la moneda que desea comprar"), Length(max=10)])
+    hasta = SelectField("Moneda que desea adquirir:", choices=choices, validators=[DataRequired(message="Debe de informar la moneda que desea comprar"), Length(max=10)])
     # Campo Q_MONEDA_HASTA:
-    Q_hasta = FloatField("Q_hasta")
+    Q_hasta = FloatField("Cantidad de unidades adquiridas:")
     # Campo VALOR_PU:
-    PU = FloatField("PU")
+    PU = FloatField("Precio Unitario por moneda invertida (rate):")
 
 

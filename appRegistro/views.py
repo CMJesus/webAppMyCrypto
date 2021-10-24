@@ -27,7 +27,7 @@ def start():
 def nuevo():
     formulario = MovimientoFormulario()
     if request.method == "POST":
-        # FUNCIÓN ENVIAR:
+        # FUNCIÓN ENVIAR (método POST):
         if request.form.get("Enviar"):
             if formulario.validate():
                 flash("FORMULARIO VALIDADO")

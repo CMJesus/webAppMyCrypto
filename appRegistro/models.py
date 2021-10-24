@@ -1,5 +1,4 @@
 import sqlite3
-
 # ************************************************************
 # -----------------Funciones Base de Datos--------------------
 # ************************************************************
@@ -9,7 +8,7 @@ class DBManager():
     def __init__(self, ruta_basedatos):
         self.ruta_basedatos = ruta_basedatos
 
-    # MÉTODOS:
+    # MÉTODOS DE LA CLASE:
     
     # FUNCIÓN CONSULTA_SQL:
     def consultaSQL(self, consulta, params = []):
