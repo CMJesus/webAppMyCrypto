@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/CMJesus/webAppMyCrypto">
     <img src="appRegistro/static/broker.jpeg" alt="Logo" width="240" height="160">
   </a>
 
