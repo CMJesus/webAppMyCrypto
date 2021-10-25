@@ -89,7 +89,7 @@ Una vez realizado lo indicado anteriormente, ejecutar en la terminal el siguient
 <!-- CONTACT -->
 ## Contacto:
 
-Nombre: Jesús Capitán Minguet - jcapitan@gmail.com
+Nombre: Jesús Capitán Minguet - jcapitanminguet@gmail.com
 
 Link del Proyecto: [https://github.com/CMJesus/webAppMyCrypto](https://github.com/CMJesus/webAppMyCrypto)
 
