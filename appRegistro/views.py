@@ -26,6 +26,8 @@ def start():
 @app.route("/nuevo", methods=["GET", "POST"])
 def nuevo():
     formulario = MovimientoFormulario()
+    formulario.desde.choices = formulario.getChoicesDesde()
+    
     if request.method == "POST":
         # FUNCIÓN ENVIAR (método POST):
         if request.form.get("Enviar"):

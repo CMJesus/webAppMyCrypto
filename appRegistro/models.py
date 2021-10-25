@@ -1,8 +1,9 @@
 import sqlite3
+from appRegistro import app 
 # ************************************************************
 # -----------------Funciones Base de Datos--------------------
 # ************************************************************
-# 
+
 # CLASE DBManager.
 class DBManager():
     def __init__(self, ruta_basedatos):
@@ -33,7 +34,7 @@ class DBManager():
         return registros
 
     # FUNCIÓN: EJECUTAR_SQL: 
-        # Proceso: "INSERT" (CRUD), desde el "views".
+    # Proceso: "INSERT" (CRUD), desde el "views".
     def ejecutarSQL(self, consulta, params):
         conex = sqlite3.connect(self.ruta_basedatos)
         cur = conex.cursor()

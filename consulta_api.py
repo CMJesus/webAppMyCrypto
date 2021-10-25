@@ -3,6 +3,7 @@
 # ************************************************************
 
 from appRegistro import app
+from flask import flash
 import requests
 import decimal
 
@@ -21,10 +22,9 @@ def getPU(desde, hasta):
     if answer.status_code == 200:
         rate = answer.json()['rate']
     # elif answer.status_code != 200:
+    #     flash("ERROR EN LA CONSULTA:" + status_code)
     #     print("ERROR DE STATUS CODE: " + status_code)
-    # Me da un status code 500 (aunque no me sale siempre): pero la respuesta es: 
-    # {'error': "You requested specific single item that we don't have at this moment."}.
-    # Es la moneda Bsv" > REVISAR.    
+
     else:
         rate = 0
     return answer.status_code, rate

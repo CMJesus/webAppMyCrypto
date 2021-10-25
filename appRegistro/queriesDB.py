@@ -7,8 +7,9 @@ from consulta_api import getPU
 # LISTA DE MONEDAS PARA LOS CAMPOS DEL FORMULARIO Y FUNCIONES:
 choices=[('EUR', 'Euro'), ('ETH', 'Ethereum'), ('LTC', 'Litecoin'), 
         ('BNB', 'Binance'), ('EOS', 'EOS'), ('XLM', 'Stellar'), 
-        ('TRX', 'Tron'), ('BTC', 'Bitcoin'), ('XRP', 'Ripple'), ('BCHSV', 
-        'BitcoinSV'), ('USDT', 'StDolar'), ('BSV', 'Bsv'), ('ADA', 'Cardano')
+        ('TRX', 'Tron'), ('BTC', 'Bitcoin'), ('XRP', 'Ripple'), 
+        ('BCH', 'Bitcoin Cash'), ('USDT', 'StDolar'), ('BCHSV', 
+        'Bitcoin SV'), ('ADA', 'Cardano')
         ]
 
 # FUNCIÓN GETVALOR,llamada por el  bucle FOR "choices"; 

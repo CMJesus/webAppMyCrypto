@@ -11,8 +11,8 @@ from appRegistro.queriesDB import getSaldo
 choices=[
     ('EUR', 'Euro'), ('ETH', 'Ethereum'), ('LTC', 'Litecoin'), 
     ('BNB', 'Binance'), ('EOS', 'EOS'), ('XLM', 'Stellar'), ('TRX', 'Tron'), 
-    ('BTC', 'Bitcoin'), ('XRP', 'Ripple'), ('BCHSV', 'BitcoinSV'), ('USDT', 
-    'StDolar'), ('BSV', 'Bsv'), ('ADA', 'Cardano')
+    ('BTC', 'Bitcoin'), ('XRP', 'Ripple'), ('BCH', 'Bitcoin Cash'), ('USDT', 
+    'StDolar'), ('BCHSV', 'Bitcoin SV'), ('ADA', 'Cardano')
         ]
 
 # CLASE MOVIMIENTO_FORMULARIO: 
@@ -31,14 +31,15 @@ class MovimientoFormulario(FlaskForm):
     
     # FUNCIÓN GET_CHOICES_DESDE.
     # Proceso: selecciona las monedas que disponen de crédito:
-    def getChoicesDesde(dbManager):
+    @classmethod
+    def getChoicesDesde(cls):
         # Euro constante.
         stockChoices=[('EUR', 'Euro')]
         # Este bucle iterará en la lista de tuplas "choices".
         for choice in choices:
             if choice[0] != "EUR":
                 # Llamamos a la función getSaldo:
-                saldoCrypto = getSaldo(dbManager, choice[0])
+                saldoCrypto = getSaldo(cls.dbManager, choice[0])
                 if saldoCrypto > 0:
                     stockChoices.append(choice)
         #print(stockChoices)        
@@ -52,7 +53,7 @@ class MovimientoFormulario(FlaskForm):
     # Campo TIEMPO:
     time = StringField("Hora:", validators=[DataRequired(message="Debe de informar sobre la hora")])
     # Campo MONEDA_DESDE: no me acepta float.
-    desde = SelectField("Moneda desde la que desea hacer su inversión:", choices=getChoicesDesde(dbManager))
+    desde = SelectField("Moneda desde la que desea hacer su inversión:", choices=choices)
     # Campo Q_MONEDA_DESDE:
     Q_desde = FloatField("Importe a invertir:")
     # Campo MONEDA_HASTA:
