@@ -13,21 +13,29 @@
                 {{ form.hidden_tag() }}
                 <div class="campo-formulario">
                     {{ form.date.label() }}
-                    {{ form.date(type="date") }}
+                    {{ form.date(type="date", readonly=True) }}
                 </div>
                 <div class="campo-formulario">    
                     {{ form.time.label() }}
-                    {{ form.time(type="time") }}
+                    {{ form.time(type="time", readonly=True) }}
                 </div>
 
                 <div class="campo-formulario">
                     {{ form.desde.label() }}
-                    {{ form.desde(type="text") }}
+                    {% if value_PU == Null %}
+                        {{ form.desde(type="text") }}
+                    {% else %}
+                        {{ form.desde(type="text") }}   
+                    {% endif %}
                 </div>
                 
                 <div class="campo-formulario">    
                     {{ form.Q_desde.label() }}
-                    {{ form.Q_desde(type="number", step="0.000000001") }}
+                    {% if value_PU == Null %}
+                        {{ form.Q_desde(type="number", step="0.000000001") }}
+                    {% else %}
+                        {{ form.Q_desde(type="number", readonly=True) }}
+                    {% endif %}
                 </div>
 
                 <div class="campo-formulario">

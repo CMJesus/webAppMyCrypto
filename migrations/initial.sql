@@ -1,4 +1,4 @@
-CREATE TABLE "myCrypto" IF NOT EXISTS (
+CREATE TABLE "myCrypto" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"date"	TEXT NOT NULL,
 	"time"	TEXT NOT NULL,

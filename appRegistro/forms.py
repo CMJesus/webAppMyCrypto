@@ -1,6 +1,6 @@
 from flask import flash
 from flask_wtf import FlaskForm
-from wtforms import HiddenField, DateField, StringField, SubmitField, SelectField, FloatField, DecimalField
+from wtforms import HiddenField, DateField, StringField, SubmitField, SelectField, FloatField, DecimalField, TimeField
 from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
 from appRegistro.models import DBManager
 import datetime
@@ -49,9 +49,9 @@ class MovimientoFormulario(FlaskForm):
 # ----------------------Formulario----------------------------
 # ************************************************************
     # Campo FECHA:
-    date = DateField("Fecha:", validators=[DataRequired(message="Debe de introducir una fecha"), date_validate])
+    date = DateField("Fecha:", default=datetime.date.today(),validators=[DataRequired(message="Debe de introducir una fecha"), date_validate])
     # Campo TIEMPO:
-    time = StringField("Hora:", validators=[DataRequired(message="Debe de informar sobre la hora")])
+    time = StringField("Hora:", default=datetime.datetime.now().strftime("%H:%M"), validators=[DataRequired(message="Debe de informar sobre la hora")])
     # Campo MONEDA_DESDE: no me acepta float.
     desde = SelectField("Moneda desde la que desea hacer su inversión:", choices=choices)
     # Campo Q_MONEDA_DESDE:
