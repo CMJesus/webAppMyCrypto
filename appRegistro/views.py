@@ -5,7 +5,6 @@ from appRegistro.forms import MovimientoFormulario
 from consulta_api import getPU, APIerror
 from appRegistro.queriesDB import getSaldo, getSumaFrom, getValorCryptos
 
-
 ruta_basedatos = app.config.get("RUTA_BASE_DATOS")
 dbManager = DBManager(ruta_basedatos)
 
@@ -27,7 +26,6 @@ def start():
         flash ("Se ha producido un error de acceso a la base de datos,  " + str(e))
         print(e)
         return render_template("index.html", disableInicio=True)
-
 
 # 2) FUNCIÓN NUEVA TRANSACCIÓN:
 @app.route("/nuevo", methods=["GET", "POST"])
@@ -86,8 +84,8 @@ def nuevo():
                             status_code, rate = getPU(value_desde, value_hasta)
                             print(status_code, rate)
                         except APIerror as e:
+                            print("Se ha producido un error en la consulta a la API.", e)
                             flash ("Se ha producido un error en la consulta a la API.")
-                            print(e)
                             return render_template("nuevo_mov.html", form=formulario, disableNuevo=True)
 
                         if status_code != 200:
@@ -99,11 +97,7 @@ def nuevo():
                 else:
                     flash("No hay saldo disponible para realizar la transacción. Su saldo disponible es: " + str(saldo))
                     return render_template("nuevo_mov.html", form=formulario, disableNuevo=True)
-            
-            # except MyDBError as e:
-            
-            # except MyAPIerror as e:
-
+                        
     elif request.method == "GET":
         return render_template("nuevo_mov.html", form=formulario, disableNuevo=True)
 
@@ -122,7 +116,7 @@ def status():
         flash("Error calculando saldo, consulte con su administrador,  " + str(e))
         return render_template("status.html", saldo=0, invertido=0, valor=0, disablePortfolio=True)
     except APIerror as e:
+        print("Error en la consulta API.", e)
         flash ("Se ha producido un error en la consulta a la API.")
-        print(e)
         return render_template("status.html", saldo=0, invertido=0, valor=0, disablePortfolio=True)
         

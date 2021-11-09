@@ -31,7 +31,6 @@ def getPU(desde, hasta):
             print("ERROR DE STATUS CODE: " + status_code)
     except Exception as e:
         raise APIerror(e)
-
     return answer.status_code, rate
 
 
