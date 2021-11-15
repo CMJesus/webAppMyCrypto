@@ -48,7 +48,7 @@
                 <div class="campo-formulario">
                     {{ form.Q_hasta.label() }}
                     {% if value_PU == Null %}
-                        {{ form.Q_hasta(type="number") }}
+                        {{ form.Q_hasta(type="number", readonly=True) }}
                     {% else %}
                         {{ form.Q_hasta(type="number", value=form.Q_desde.data * value_PU, readonly=True) }}   
                     {% endif %}                                                
@@ -57,7 +57,7 @@
                 <div class="campo-formulario">
                     {{ form.PU.label() }}
                     {% if value_PU == Null %}
-                        {{ form.PU(type="number") }}
+                        {{ form.PU(type="number", readonly=True) }}
                     {% else %}
                         {{ form.PU(type="number", value=value_PU, readonly=True) }}
                     {% endif %}

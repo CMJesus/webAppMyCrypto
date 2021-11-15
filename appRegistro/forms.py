@@ -1,6 +1,6 @@
 from flask import flash
 from flask_wtf import FlaskForm
-from wtforms import HiddenField, DateField, StringField, SubmitField, SelectField, FloatField, DecimalField, TimeField
+from wtforms import DateField, StringField, SubmitField, SelectField, FloatField, DecimalField, TimeField, HiddenField
 from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
 from appRegistro.models import DBManager
 import datetime
@@ -46,7 +46,7 @@ class MovimientoFormulario(FlaskForm):
         return stockChoices
 
 # ************************************************************
-# ----------------------Formulario----------------------------
+# ----------------------Campos del Formulario-----------------
 # ************************************************************
     # Campo FECHA:
     date = DateField("Fecha:", default=datetime.date.today(),validators=[DataRequired(message="Debe de introducir una fecha"), date_validate])
@@ -54,10 +54,12 @@ class MovimientoFormulario(FlaskForm):
     time = StringField("Hora:", default=datetime.datetime.now().strftime("%H:%M"), validators=[DataRequired(message="Debe de informar sobre la hora")])
     # Campo MONEDA_DESDE: no me acepta float.
     desde = SelectField("Moneda desde la que desea hacer su inversión:", choices=choices)
+    desde_noChange = HiddenField()
     # Campo Q_MONEDA_DESDE:
     Q_desde = FloatField("Importe a invertir:")
     # Campo MONEDA_HASTA:
     hasta = SelectField("Moneda que desea adquirir:", choices=choices, validators=[DataRequired(message="Debe de informar la moneda que desea comprar"), Length(max=10)])
+    hasta_noChange = HiddenField()
     # Campo Q_MONEDA_HASTA:
     Q_hasta = FloatField("Cantidad de unidades adquiridas:")
     # Campo VALOR_PU:

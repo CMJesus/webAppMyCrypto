@@ -35,13 +35,13 @@
     git clone https://github.com/CMJesus/webAppMyCrypto
     ```
 
-2. Abrir el editor de texto con el que trabajemos ("Visual Studio Code"). Acto seguido,abrir el archivo en el que hayamos alojado el repositorio clonado (en adelante, el "Archivo").
+2. Abrir el editor de texto con el que trabajemos (por ejemplo, el editor de texto "Visual Studio Code"). Acto seguido,abrir el archivo en el que hayamos alojado el repositorio clonado (en adelante, el "Archivo").
 
-3. Una vez en el Archivo, abriremos una nueva terminal, donde crearemos el entorno virtual para nuestro Archivo. Posteriormente, procederemos a activar dicho entorno virtual:
+3. Una vez abierto el Archivo en el editor de texto seleccionado, abriremos una nueva ventana de Terminal. Acto seguido, crearemos el entorno virtual en nuestro Archivo, y; posteriormente, procederemos a activar dicho entorno virtual con alguno de los siguientes comandos:
     - Creación: ```python(3) -m venv venv```
     - Activación (macOs): ```. venv/bin/activate```
 
-3. Instalar Flask en nuestro terminal:
+3. Instalar Flask en nuestra ventana Terminal:
     ```
     pip install flask
     ```
@@ -70,9 +70,9 @@
         * https://www.coinapi.io
     - Una vez hayamos obtenido una "apikey", introducir dicha apikey entre las comillas indicadas para dicho campo. 
 
-7. Base de Datos (librería de python sqlite3).
+7. Base de Datos (implementada con la librería de python, sqlite3).
     - En Archivo, crear una carpeta bajo la rúbrica "data".
-    - En data, crear un nuevo archivo formato ".db", denominado "mycrypto.db", tal y como se indica en config_template.py (no renombrado).
+    - En la carpeta "data", crear un nuevo archivo formato ".db", denominado "mycrypto.db", tal y como se indica en config_template.py (no renombrado).
     - Una vez creado el archivo mycrypto.db, crear tabla según indicaciones de archivo "initial.sql", alojado en la carpeta "migrations". Ejecutar:
         ```
         .read migrations/initial.sql
@@ -82,7 +82,7 @@
 <br />
 
 # Instrucciones para la ejecución de la WebApp:
-Una vez realizado lo indicado anteriormente, ejecutar en la terminal el siguiente mandato: ```flask run```
+Una vez realizado lo indicado anteriormente, ejecutar en la Terminal el siguiente mandato: ```flask run```
 
 <br />
 
