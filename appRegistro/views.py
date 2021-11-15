@@ -83,10 +83,7 @@ def nuevo():
             if saldo >= value_Q_desde:
                 print(value_desde, value_hasta)
                 
-                if value_desde == value_hasta:
-                    
-                    # Si meto cantidades a mano en los dos ultimos, me deja meter de euro a euro
-                    
+                if value_desde == value_hasta:                                    
                     flash("Las monedas no pueden ser iguales")
                     return render_template("nuevo_mov.html", form=formulario, disableNuevo=True)
                 else:
